@@ -177,6 +177,12 @@
             var vdevs, dataDisks1, parityDisks1, minDataDisks, totalDisks1, usableSize1, size1;
             var totalDataDisks, totalUsableDisks, totalParityDisks, usableCapacityTB, rawCapacity, spares, totalTotalDisks, jbods12, jbods24, jbods45, jbods72, jbods90;
 
+            var stdIOPSWithZil, stdIOPSWithL2arc, stdIOPSWithMetaDev, stdIOPSWithAll3;
+            var IOPSCache;
+            var throughputsKBPS=new Array(4);
+            var throughputsMBPS=new Array(4);
+            var perTBIOPS=new Array(4);
+
 
                     // function to calculate STDIOPS
                       function calculate_IOPS(usableCapacity,diskType1,raidType1){
@@ -217,8 +223,6 @@
                          //alert("Std IOPS="+stdIOPS);
 
                          
-
-
                       
                       };
 
@@ -258,11 +262,50 @@
                       }; 
 
 
+                      function calculateIOPSWithOthers(){
+
+                       // iops with zil, l2arc, metadev
+                       var zilIOPS=2000;
+                       var L2ARCIOPS= 2000;
+                       var MetaDevIOPS=1500;
+
+                      stdIOPSWithZil= stdIOPS+ (numberOfZilGroups*zilIOPS);
+                      stdIOPSWithL2arc= stdIOPS+ (numberOfCache*L2ARCIOPS*cacheHitPercent)/100;
+                      stdIOPSWithMetaDev= stdIOPS+ (numberOfMetaGroups)*MetaDevIOPS*3;
+                      stdIOPSWithAll3= stdIOPSWithZil+ stdIOPSWithL2arc+stdIOPSWithMetaDev-(2*stdIOPS);
+
+                      }; 
 
 
+
+                      function throughPutTable(){
+
+                       
+
+                        IOPSCache={"IOPSWithCache":[ stdIOPSWithZil, stdIOPSWithL2arc, stdIOPSWithMetaDev,stdIOPSWithAll3]};
+                        var k=0;
+                        for (var i in IOPSCache.IOPSWithCache) {
+                          throughputsKBPS[k]=IOPSCache.IOPSWithCache[i]*averageBlockSize;
+                          throughputsMBPS[k]=throughputsKBPS[i]*8 /1000;
+                          perTBIOPS[k]=Math.round(IOPSCache.IOPSWithCache[i]/usableCapacityTB);
+                          k=k+1;
+                          
+                        };
+
+                      // alert(throughputsKBPS[0]);
+                          
+
+                  
+                      }; 
+
+
+
+                      
 
     calculate_IOPS(100,"sas10K1200GB","Raidz141"); 
     calculateDiskParamters();
+    calculateIOPSWithOthers();
+    throughPutTable();
 
   
     </script>
@@ -300,6 +343,9 @@
       <h3>Output section</h3>
       <p id="stdiops"></p>
       <div id="diskParamters"></div>
+      <div id="otherinfo"></div>
+
+      <div id="throughputs"></div>
       
         
       
@@ -310,7 +356,26 @@ document.getElementById("stdiops").innerHTML = "Std IOPS="+stdIOPS;
   document.getElementById("diskParamters").innerHTML = "Total Number of data disks:"+totalDataDisks+"<br>Total Number of usable disks:"+totalUsableDisks+
                         "<br>Total Number of Parity Disks:"+totalParityDisks+"<br>Usable Capacity:"+usableCapacityTB+
                         "<br>Raw capcity:"+rawCapacity +"<br><br><br> Secondary values <br><br>Total disks:"+totalTotalDisks +"<br>Spares:"+spares
-                        +"<br>Number of JBODS (12 Bay):"+jbods12 +"<br>Number of JBODS (24 Bay):"+jbods24+ "<br>Number of JBODS (45 Bay):"+jbods45+"<br>Number of JBODS (72 Bay):"+jbods72+ "<br>Number of JBODS (90 Bay):"+jbods90;
+                        +"<br>Number of JBODS (12 Bay):"+jbods12 +"<br>Number of JBODS (24 Bay):"+jbods24+ "<br>Number of JBODS (45 Bay):"+jbods45+"<br>Number of JBODS (72 Bay):"+jbods72+ "<br>Number of JBODS (90 Bay):"+jbods90+
+                        "<br><br>";
+
+  document.getElementById("otherinfo").innerHTML = "<br>Other Info about IOPS<br><br>StdIOPS with Zil:"+stdIOPSWithZil
+                                                    +"<br>StdIOPS with L2ARC:"+stdIOPSWithL2arc
+                                                    +"<br>StdIOPS with MetaDev:"+stdIOPSWithMetaDev
+                                                    +"<br>StdIOPS with ZIL, MetaDev and L2ARC:"+stdIOPSWithAll3;
+
+   document.getElementById("throughputs").innerHTML = "<pre><br>Throughputs Table<br><br>Disk:                          IOPS    Throuput (KBPS) Throuput (MBPS)    perTB IOPS<br><br>"+
+   
+                            "Disk with Wite Cache           "+stdIOPSWithZil+ "     "+throughputsKBPS[0]+"           "+throughputsMBPS[0]+"              "+perTBIOPS[0]+"<br>"
+
+                              +"Disk with Read Cache           "+stdIOPSWithL2arc+ "     "+throughputsKBPS[1]+"           "+throughputsMBPS[1]+"              "+perTBIOPS[1]+"<br>"
+
+                              +"Disk with Meta Cache           "+stdIOPSWithMetaDev+ "     "+throughputsKBPS[2]+"           "+throughputsMBPS[2]+"              "+perTBIOPS[2]+"<br>"
+
+                              +"Disk with all three Cache      "+stdIOPSWithAll3+ "     "+throughputsKBPS[3]+"           "+throughputsMBPS[3]+"              "+perTBIOPS[3]+"<br></pre>";
+
+   
+                                                                                                                       
 
 </script>
 
@@ -368,6 +433,26 @@ document.getElementById("stdiops").innerHTML = "Std IOPS="+stdIOPS;
                    </ol>
 
                 </div>
+
+
+                <div class="alert alert-info">
+                 
+                 <strong>Calculation of IOPS with Zil, L2ARC and MetaDev</strong> <br><br>
+                 
+                   <ol>
+                     <li>StdIOPS with Zil= StdIOPS+ (Number of Zil Groups* Zil IOPS)</li><br>
+                     <li>StdIOPS with L2ARC= StdIOPS+ (Number of Cache* L2ARC IOPS*Cache Hit Percent)/100</li><br>
+                     <li>StdIOPS with MetaDev= StdIOPS+ (Number of MetaDev Groups* MetaDev IOPS)* RaidType</li><br>
+                     <li>StdIOPS with Zil, L2ARC and MetaDev= StdIOPS with Zil+ (StdIOPS with L2ARC- StdIOPS)+ (StdIOPS with MetaDev- StdIOPS)   </li><br>
+                     
+
+
+                   </ol>
+
+
+                </div>
+
+
              
 
     </div>
@@ -378,4 +463,5 @@ document.getElementById("stdiops").innerHTML = "Std IOPS="+stdIOPS;
 </div>
 
 </body>
+<!--Created by Deepak Jayaprakash -->
 </html>
