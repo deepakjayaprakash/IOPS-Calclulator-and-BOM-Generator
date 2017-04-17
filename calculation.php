@@ -9,6 +9,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+    
+    
+                      
+<?php 
+        
+        $usableCapacity=$_GET['usablecapacity'];
+        $raidType=$_GET['raidtype'];
+        $diskType=$_GET['disktype'];
+        
+        
+        ?>
+        
+        
+        
+    
+    
     
     <script>
     
@@ -188,11 +205,12 @@
 
                     // function to calculate STDIOPS
                       function calculate_IOPS(usableCapacity,diskType1,raidType1){
-                       
+                      
                         
                         for (var i in disks.disk) {
-                         // alert(disks.disk[i].diskType);
+                         
                           if(disks.disk[i].diskType==diskType1){
+                              
                             usableSize1=disks.disk[i].usableSize;
                             size1=disks.disk[i].size;
                              iops1=disks.disk[i].iops;
@@ -304,9 +322,10 @@
 
 
 
-                      
-
-    calculate_IOPS(100,"sas10K1200GB","Raidz141"); 
+    var IPusablecapacity= <?php echo $usableCapacity ?>;
+    var IPdisktype=   "<?php echo $diskType ?>";  
+    var IPraidtype=   "<?php echo $raidType ?>";
+    calculate_IOPS(IPusablecapacity,IPdisktype,IPraidtype); 
     calculateDiskParamters();
     calculateIOPSWithOthers();
     throughPutTable();

@@ -322,20 +322,27 @@ document.getElementById("CustomerInfo").innerHTML = "<pre>Quote prepared By:    
   document.getElementById("pricinglist").innerHTML =  " <pre><b>Type          Qty          Unit Price          Total Price<br>Controllers    "+numControllers+"            "+ costController+"                 "+(costController*numControllers)
       +"<br>JBODS          "+numJBODS+"            "+ costJBODS+"                 "+(numJBODS*costJBODS)+
       "<br>Data Disks    "+numDataDisks+"            "+ costDataDisks+"                 "+(numDataDisks*costDataDisks)+
-      "<br>Zil            "+zil+"            "+ costZil+"                 "+(zil*costZil)+
-      "<br>Read Cache      "+readCache+"            "+ costReadCache+"                 "+(readCache*costReadCache)+
-      "<br>Zil            "+metaCache+"            "+ costMetaCache+"                 "+(metaCache*costMetaCache)+
-      "<br>Zil            "+numberOfSASCables+"            "+ costSASCables+"                 "+(costSASCables*numberOfSASCables)+
+      "<br>Zil            "+zil+"            "+ costZil+"                   "+(zil*costZil)+
+      "<br>Read Cache     "+readCache+"            "+ costReadCache+"                   "+(readCache*costReadCache)+
+      "<br>Zil            "+metaCache+"            "+ costMetaCache+"                  "+(metaCache*costMetaCache)+
+      "<br>Sas Cables    "+numberOfSASCables+"            "+ costSASCables+"                 "+(costSASCables*numberOfSASCables)+
+      
+       "<br><br><br><br><br><br>Total HW Cost (3 yr support cost included)  : "+totalHWCost+
+       "<br><br>Support Charge per year from 4th year  : "+supportHW+
+      
+       "<br><br><br><br><br><br>Total SW Cost  : "+totalSWCost+
+       "<br><br>Support Charge per year from 4th year  : "+supportSW+
+      
+      
+       "<br><br><br><br><br><br>Total Cost for 3years   : "+totalCost3+
+       "<br><br>Total Cost for 3years   : "+totalCost5+
+      
+       "<br><br><br><br><br><br>Cost Per GB PM for 3year   : "+costPerGBPerMonth3+
+       "<br><br>Cost Per GB PM for 5year   : "+costPerGBPerMonth5+
       
       "</pre>";
 
-  document.getElementById("otherinfo").innerHTML = "<br>Other Info about IOPS<br><br>StdIOPS with Zil:";
-
-   document.getElementById("throughputs").innerHTML = "<pre><br>Throughputs Table<br><br>Disk:                          IOPS    Throuput (KBPS) Throuput (MBPS)    perTB IOPS<br><br>"+
-                            
-                             "Disk                           "+"<br>"+
-   
-                          "</pre>";
+  
 
    
     

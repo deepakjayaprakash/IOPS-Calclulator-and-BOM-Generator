@@ -63,19 +63,25 @@
         
                 <div class="container">
           
-          <form class="form-horizontal">
+          <form class="form-horizontal" action="calculation.php" method="GET">
             <div class="form-group">
               <label class="control-label col-sm-2" for="email">Select Disk Type:</label>
               <div class="col-sm-8">
-                    <select name="cars">
-                    <option value="nlsas">NLSAS</option>
-                    <option value="sas10">SAS 10K</option>
-                    <option value="sas15">SAS 15K</option>
-                    <option value="ssd">SSD</option>
-                    <option value="ssd100">SSD-IF-100</option>
+                    <select name="disktype" id="disktype">
+                    <option value="nlsas4">NLSAS- 4 TB</option>
+                        <option value="nlsas6">NLSAS- 6 TB</option>
+                        <option value="nlsa8">NLSAS- 8 TB</option>
+                    <option value="sas10kt">SAS 10K- 1.8 TB</option>
+                        <option value="sas10K1200GB">SAS 10K- 1.2 TB</option>
+                        <option value="sas10K900GB">SAS 10K- 900 GB</option>
+                    <option value="sas15K600GB">SAS 15K-600GB</option>
+                    <option value="ssd2">SSD-2TB</option>
+                        <option value="ssd4">SSD-4TB</option>
+                        <option value="ssd800GB">SSD-800 GB</option>
+                    <option value="ssdif100">SSD-IF-100</option>
                     <option value="zil">ZIL</option>
                     <option value="l2arc">L2ARC</option>
-                    <option value="metadev">MetaDev</option>
+                    <option value="MetaDev">MetaDev</option>
                   </select>
                   <br><br>
               
@@ -169,14 +175,14 @@
             <div class="form-group">
               <label class="control-label col-sm-2" for="pwd">Select RAID Type:</label>
               <div class="col-sm-8">          
-                    <select name="cars">
-                    <option value="mirror">Mirror</option>
-                    <option value="raidz121">RAIDz1-Single Parity(2+1)</option>
-                    <option value="raidz141">RAIDz1-Single Parity(4+1) Typical SAS</option>
-                    <option value="raidz181">RAIDz1-Single Parity(8+1) Typical SSD</option>
-                    <option value="raidz242">RAIDz2-Double Parity(4+2)</option>
-                    <option value="raidz282">RAIDz1-Single Parity(8+2) Typical NLSAS</option>
-                    <option value="raidz383">RAIDz3-Triple Parity(8+3)</option>
+                    <select name="raidtype" id=""raidtype>
+                    <option value="Mirror">Mirror</option>
+                    <option value="Raidz121">RAIDz1-Single Parity(2+1)</option>
+                    <option value="Raidz141">RAIDz1-Single Parity(4+1) Typical SAS</option>
+                    <option value="Raidz181">RAIDz1-Single Parity(8+1) Typical SSD</option>
+                    <option value="Raidz242">RAIDz2-Double Parity(4+2)</option>
+                    <option value="Raidz282">RAIDz1-Single Parity(8+2) Typical NLSAS</option>
+                    <option value="Raidz383">RAIDz3-Triple Parity(8+3)</option>
                     
                   </select>
                   <br><br>
@@ -256,7 +262,7 @@
                <div class="form-group">
               <label class="control-label col-sm-2" for="pwd">Enter Usable Capacity:</label>
               <div class="col-sm-8">          
-                   <input type="number" name="quantity" min="1" max="1000">
+                   <input type="number" name="usablecapacity" id="usablecapacity" min="1" max="1000">
                   <br><br>
               </div>
             </div>
