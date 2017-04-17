@@ -182,6 +182,8 @@
             var throughputsKBPS=new Array(4);
             var throughputsMBPS=new Array(4);
             var perTBIOPS=new Array(4);
+        
+            var stdThroughput, stdperTBIOPS;
 
 
                     // function to calculate STDIOPS
@@ -294,7 +296,9 @@
 
                       // alert(throughputsKBPS[0]);
                           
-
+                        stdThroughput=stdIOPS*averageBlockSize;
+                        stdperTBIOPS=Math.round(stdIOPS/usableCapacityTB);
+                          
                   
                       }; 
 
@@ -365,6 +369,8 @@ document.getElementById("stdiops").innerHTML = "Std IOPS="+stdIOPS;
                                                     +"<br>StdIOPS with ZIL, MetaDev and L2ARC:"+stdIOPSWithAll3;
 
    document.getElementById("throughputs").innerHTML = "<pre><br>Throughputs Table<br><br>Disk:                          IOPS    Throuput (KBPS) Throuput (MBPS)    perTB IOPS<br><br>"+
+                            
+                             "Disk                           "+stdIOPS+ "     "+stdThroughput+"           "+stdThroughput*8/1000+"              "+stdperTBIOPS+"<br>"+
    
                             "Disk with Wite Cache           "+stdIOPSWithZil+ "     "+throughputsKBPS[0]+"           "+throughputsMBPS[0]+"              "+perTBIOPS[0]+"<br>"
 
@@ -451,6 +457,27 @@ document.getElementById("stdiops").innerHTML = "Std IOPS="+stdIOPS;
 
 
                 </div>
+        
+        
+        <div class="alert alert-success">
+                  <strong>Calculation IOPS and throughputs for disks with cache</strong> <br><br>
+                  
+                   <ol>
+                     <li>Disk IOPS= StdIOPS </li><br>
+                       <li>Disk with write cache =StdIOPS with Zil </li><br>
+                       <li>Disk with read cache =StdIOPS with L2ARC</li><br>
+                       <li>Disk with Meta cache =StdIOPS with MetaDev</li><br>
+                       <li>Disk with all three cache =StdIOPS with ALlThree</li><br>
+                       <li>perTBIOPS= IOPS/ Usable Capacity</li><br><br>
+                       
+                       <li>Throughput (KBps)= IOPS * AverageBlockSize</li><br>
+                       <li>Throughput (MBps)= Throughput (KBps)*8/ 1000</li><br>
+                       
+
+                   </ol>
+                </div>
+        
+        
 
 
              
