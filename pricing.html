@@ -214,12 +214,13 @@
     usableCapcityTB=100;
     numberOfSASCables=16;
         
-    
-        function calculatePrice(){
-           
+      
           // unit prices 
             var costController, costJBODS, costDataDisks, costZil, costReadCache, costMetaCache, costSASCables,pricepertb;
             costSASCables=100;
+        
+        function calculatePrice(){
+         
             
             for( var i in disks.disk){
                
@@ -299,9 +300,13 @@
     <div id="menu2" class="tab-pane fade  in active">
         
         
-      <h3>Output section</h3>
-      <p id="stdiops"></p>
-      <div id="diskParamters"></div>
+     
+        <div>
+            <h1>Customer Info</h1>
+      <p id="CustomerInfo"></p>
+            </div>
+      
+         <p id="pricinglist"></p>
       <div id="otherinfo"></div>
 
       <div id="throughputs"></div>
@@ -310,10 +315,19 @@
       
 
 <script>
-document.getElementById("stdiops").innerHTML = "Std IOPS=";
+document.getElementById("CustomerInfo").innerHTML = "<pre>Quote prepared By:         Ajesh Baby, Senior Product Manager<br>Cusomter:                   Wipro <br>Customer Contact:	    Suradeep Das <br>Delivery Address:	    Nxtra Data, White Field<br>Description:	          Storage 500TB Tier1 and Tier3, 950TB backup <br> Usable Capacity:              100<br>Tier:                      SSDHighPerformance</pre>";
 
-  document.getElementById("diskParamters").innerHTML = "Total Number of data disks:"+
-                        "<br><br>";
+    
+    
+  document.getElementById("pricinglist").innerHTML =  " <pre><b>Type          Qty          Unit Price          Total Price<br>Controllers    "+numControllers+"            "+ costController+"                 "+(costController*numControllers)
+      +"<br>JBODS          "+numJBODS+"            "+ costJBODS+"                 "+(numJBODS*costJBODS)+
+      "<br>Data Disks    "+numDataDisks+"            "+ costDataDisks+"                 "+(numDataDisks*costDataDisks)+
+      "<br>Zil            "+zil+"            "+ costZil+"                 "+(zil*costZil)+
+      "<br>Read Cache      "+readCache+"            "+ costReadCache+"                 "+(readCache*costReadCache)+
+      "<br>Zil            "+metaCache+"            "+ costMetaCache+"                 "+(metaCache*costMetaCache)+
+      "<br>Zil            "+numberOfSASCables+"            "+ costSASCables+"                 "+(costSASCables*numberOfSASCables)+
+      
+      "</pre>";
 
   document.getElementById("otherinfo").innerHTML = "<br>Other Info about IOPS<br><br>StdIOPS with Zil:";
 
@@ -324,6 +338,8 @@ document.getElementById("stdiops").innerHTML = "Std IOPS=";
                           "</pre>";
 
    
+    
+
                                                                                                                        
 
 </script>
@@ -337,29 +353,32 @@ document.getElementById("stdiops").innerHTML = "Std IOPS=";
       <h3>List of formulae</h3>
         
                 <div class="alert alert-success">
-                  <strong>Calculation of StdIOPS</strong> <br><br>
-                  StdIOPS= Number of usable disks* IOPSperDisk* WritePercentageforStdIOPS
+                  <strong>Input Paramters</strong> <br><br>
+                  Customer Info= {Customer Name, Contact, Delivery Address, Description, Usable Capcity, 
+                    Tier};
+                    
+                <br><br>
+                Quantity of: 
+                    <br>
                    <ol>
-                     <li>Number of Usable disks= Number of vdevs* Number of data disks</li><br>
-                     <li>Number of vdevs= Minimum number of data disks/ Total number of disks</li><br>
-                     <li>Minimum number of data disks= Usable Capacity/ Usable Size per disk</li><br>
-                     <li>WritePercentageforStdIOPS= Return STDIOPS given WritePercentage</li>
+                     <li>Controllers</li><br>
+                     <li>JBODS</li><br>
+                       <li>Data Disks</li><br>
+                       <li>Zil</li><br>
+                       <li>Read Cache</li><br>
+                       <li>Meta Cache</li><br>
+                       <li>SAS Cables</li><br>
 
                    </ol>
                 </div>
                 <div class="alert alert-info">
                  
-                 <strong>Calculation of disk paramters</strong> <br><br>
+                 <strong>Calculation of Hardware cost</strong> <br><br>
                  
                    <ol>
-                     <li>Total number of data disks= Number of vdevs* Total number of disks</li><br>
-                     <li>Total number of usable disks= Number of vdevs* Total number of data disks </li><br>
-                     <li>Total number of parity disks= Number of vdevs* Total number of parity disks</li><br>
-                     <li>Usable capacity (TB)= Total number of data disks* usable size per disk</li><br>
-                     <li>Raw capacity= Total number of data disks* capacity per disk(size)</li><br>
-                     <li>Number of spares= Total number of disks/ 25</li><br>
-                     <li>Total disks= Total number of disks + Number of spares + number of ZIL groups* 2 + number of cache + 
-                     number of meta groups * 3</li><br>
+                     <li>Total HW Cost ( 3 years support included)=Cost of controllers + JBODS + Zil+ Read Cache + Meta Cache + SAS Cables</li><br><br>
+                       <li>Support Charge per year from 4th year= 15 % * Total HW Cost  </li>
+                     
 
 
                    </ol>
@@ -370,29 +389,32 @@ document.getElementById("stdiops").innerHTML = "Std IOPS=";
                 
                 <div class="alert alert-danger">
                   
-                  <strong>Number of JBODS</strong> <br><br>
+                  <strong>Calculation of Software cost</strong> <br><br>
                  
                    <ol>
-                     <li>Number of JBODS( 12 Bay)= Total number of disks/ 12</li><br>
-                     <li>Number of JBODS( 24 Bay)= Total number of disks/ 24</li><br>
-                     <li>Number of JBODS( 45 Bay)= Total number of disks/ 45</li><br>
-                     <li>Number of JBODS( 72 Bay)= Total number of disks/ 72</li><br>
-                     <li>Number of JBODS( 90 Bay)= Total number of disks/ 90</li><br>
+                     <li>Total SW Cost = Usable Capacity(TB) * Price per TB</li><br><br>
+                       <li>Support Charge per year from 2nd year= 15 % * Total SW Cost  </li>
                      
+
+
                    </ol>
+
+
 
                 </div>
 
 
                 <div class="alert alert-info">
                  
-                 <strong>Calculation of IOPS with Zil, L2ARC and MetaDev</strong> <br><br>
+                 <strong>Calculation of total cost</strong> <br><br>
                  
                    <ol>
-                     <li>StdIOPS with Zil= StdIOPS+ (Number of Zil Groups* Zil IOPS)</li><br>
-                     <li>StdIOPS with L2ARC= StdIOPS+ (Number of Cache* L2ARC IOPS*Cache Hit Percent)/100</li><br>
-                     <li>StdIOPS with MetaDev= StdIOPS+ (Number of MetaDev Groups* MetaDev IOPS)* RaidType</li><br>
-                     <li>StdIOPS with Zil, L2ARC and MetaDev= StdIOPS with Zil+ (StdIOPS with L2ARC- StdIOPS)+ (StdIOPS with MetaDev- StdIOPS)   </li><br>
+                     <li>Total Cost for 3 years = Total HW cost+ Total SW Cost + (15 % * Total SW Cost )*2 </li><br><br>
+                     <li>Total Cost for 5 years = Total HW cost+ (15 % * Total HW Cost )*2 + Total SW Cost + (15 % * Total SW Cost )*4 </li><br><br>
+                    
+                     <li>Cost per GB per month for 3 years= Total Cost for 3 years/(Usable Capcity(TB) * 1000* 36)</li><br><br>
+                       
+                        <li>Cost per GB per month for 5 years= Total Cost for 5 years/(Usable Capcity(TB) * 1000* 60</li><br><br>
                      
 
 
@@ -403,21 +425,7 @@ document.getElementById("stdiops").innerHTML = "Std IOPS=";
         
         
         <div class="alert alert-success">
-                  <strong>Calculation IOPS and throughputs for disks with cache</strong> <br><br>
                   
-                   <ol>
-                     <li>Disk IOPS= StdIOPS </li><br>
-                       <li>Disk with write cache =StdIOPS with Zil </li><br>
-                       <li>Disk with read cache =StdIOPS with L2ARC</li><br>
-                       <li>Disk with Meta cache =StdIOPS with MetaDev</li><br>
-                       <li>Disk with all three cache =StdIOPS with AllThree</li><br>
-                       <li>perTBIOPS= IOPS/ Usable Capacity</li><br><br>
-                       
-                       <li>Throughput (KBps)= IOPS * AverageBlockSize</li><br>
-                       <li>Throughput (MBps)= Throughput (KBps)*8/ 1000</li><br>
-                       
-
-                   </ol>
                 </div>
         
         
