@@ -586,6 +586,24 @@
      document.getElementById("totalcost5").innerHTML =  (totalCost5); 
     
     </script> 
+    
+    <div class="row" >
+        <div class="col-md-7" style="border:1px solid; padding:10px;border-style: inset;">
+        
+        <p><strong>Quotation prepared by:</strong> Ajesh Baby</p>
+        <p><strong>Shipping and Duties are not included in this quote.</strong></p>
+        <p><strong>This is a quotation on the goods named, subject to the conditions noted below:</strong></p>
+            <p>(Describe any conditions pertaining to these prices and any additional terms of the agreement. <br>You may want to include contingencies that will affect the quotation.)</p>
+        
+        </div>
+            
+        </div> 
+            <br>
+    <div class="row" style="background-color:darkslategrey;color:white;padding:5px;text-align:center">
+            <p>Thank you for your buisness !</p>
+        </div>
+            
+  
             
     </div>
                 
