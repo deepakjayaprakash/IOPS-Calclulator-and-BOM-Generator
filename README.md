@@ -14,7 +14,10 @@ Raw capacity, Number of spares}, Throughput for each combination, Number of JBOD
 
 # Price calculation
 
-Input paratmers= {CusotmerInfo: {CompanyName, CustomerContact, OrderDescription, DeliverAddress}, Order specifications={DiskType, RAIDType, UsableCapcity,Number of controllers required,Number of JBODS required,isZilRequired, isReadCacheRequired, isMetaCacheRequired,Number of Data Disks required, Number of SAS Cables required  }}
+Input paratmers= 
+{CustomerInfo: {CompanyName, CustomerContact, OrderDescription, DeliverAddress}, 
+Order specifications={DiskType, RAIDType, UsableCapcity,Number of controllers required,Number of JBODS required,isZilRequired, isReadCacheRequired, isMetaCacheRequired,Number of Data Disks required, Number of SAS Cables required  }
+}
 
 Output= {Per Unit cost of each quantity, total cost, Total HW cost, HW support cost per year after 4th year, Total SW cost, SW support cost per year after 2nd year, Cost per GB per month per year }
 
