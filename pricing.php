@@ -58,6 +58,11 @@
         $tier=$_GET['tier'];
           }
     
+    
+    
+    
+    
+    
         
         ?>
         
@@ -67,7 +72,11 @@
     
     
     <script>
-    
+  
+    var companyName=  "<?php echo $companyName ?>";  
+    var customerName=  "<?php echo $customerName ?>";  
+    var address=  "<?php echo $address ?>";  
+    var description=  "<?php echo $description ?>";  
     
     //raid type and #data disks, 3parity disks and # total disks
     var raids={ "raid" : [
@@ -264,7 +273,7 @@
         
     
         
-    var customerName, customerContact, DeliveryAddress, description, usableCapcityTB, tier,numberOfSASCables;
+    var  usableCapcityTB, tier,numberOfSASCables;
        
     tier="<?php echo $tier ?>";
     usableCapcityTB=<?php echo $usablecapacity ?>;
@@ -338,7 +347,7 @@
   <p>UI for generating BOM(Billing of Materials) and Price Calcualtion based on Customer Inputs </p>
 
   <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#home">Input Section</a></li>
+    <li><a data-toggle="tab" href="#home">Billing of Materials</a></li>
     <li  class="active"><a data-toggle="tab" href="#menu2">Output section</a></li>
     <li><a data-toggle="tab" href="#menu3">Formulae Sheet</a></li>
   </ul>
@@ -347,13 +356,54 @@
    
       <div id="home" class="tab-pane fade">
      
-           <h3>Input Section</h3>
-      <p>Select</p>
+          <div class="col-md-2"></div>       
+
+<div class="col-md-8">
+    <div class="container-fluid" style="border:1px solid; padding:30px;">
+        <div class="row">
+            <center><img src="cloudbyteLogoQuote.PNG" </center>
+                <h1>Price Quote</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>CloudByte Inc.</h3>
+                <p>20863 Stevens Creek Blvd	</p>
+                <p>Cupertino, CA 95014	</p>
+                <p>408-663-6906	</p>
+                <br><br>
+                <p><strong>To: </strong> <?php echo $customerName.','.$companyName; ?></p>
+            </div>
+            <div class="col-md-6">
+                <br>
+                <p><strong>Quote:</strong>1013</p>
+                <p><strong>Date:</strong> <?php echo date("Y/m/d"); ?></p>
+                <p><strong>Customer ID:</strong> <?php echo $companyName; ?></p>
+                
+            </div>
+        </div> 
+        <div class="row" style="background-color:darkslategrey;color:white;padding:5px;">
+            <div class="col-md-2">Salespersoon</div>
+            <div class="col-md-2">Job</div>
+            <div class="col-md-2">Shipping Method</div>
+            <div class="col-md-2">Delivery Address</div>
+            <div class="col-md-2">Payment</div>
+            <div class="col-md-2">Due Date</div>
+        </div>
+            <div class="row">
+            <div class="col-md-2">Ajesh Baby</div>
+            <div class="col-md-2">Senior Product Support Manager</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"> <?php echo $address; ?></div>
+            <div class="col-md-2">100% Advance</div>
+            <div class="col-md-2"></div>
+        </div>
+            
+    </div>
                 
           
     
     </div>
-
+</div> 
 
     <div id="menu2" class="tab-pane fade  in active">
         
@@ -373,8 +423,13 @@
       
 
 <script>
-document.getElementById("CustomerInfo").innerHTML = "<pre>Quote prepared By:         Ajesh Baby, Senior Product Manager<br>Cusomter:                   Wipro <br>Customer Contact:	    Suradeep Das <br>Delivery Address:	    Nxtra Data, White Field<br>Description:	          Storage 500TB Tier1 and Tier3, 950TB backup <br> Usable Capacity:              100<br>Tier:                      SSDHighPerformance</pre>";
-
+/*document.getElementById("CustomerInfo").innerHTML = "<pre>Quote prepared By:         Ajesh Baby, Senior Product Manager<br>Cusomter:                   Wipro <br>Customer Contact:	    Suradeep Das <br>Delivery Address:	    Nxtra Data, White Field<br>Description:	          Storage 500TB Tier1 and Tier3, 950TB backup <br> Usable Capacity:              100<br>Tier:                      SSDHighPerformance</pre>";
+*/
+    
+document.getElementById("CustomerInfo").innerHTML = "<pre>Quote prepared By:         Ajesh Baby, Senior Product Manager<br>Cusomter:                  "+companyName+"  <br>Customer Contact:	    "+customerName+" <br>Delivery Address:	    "+address+"<br>Description:	          "+description+"<br> Usable Capacity:              "+usableCapcityTB+"<br>Tier:                      "+tier+"</pre>";
+    
+    
+    
     
     
   document.getElementById("pricinglist").innerHTML =  " <pre><b>Type          Qty          Unit Price          Total Price<br>Controllers    "+numControllers+"            "+ costController+"                 "+(costController*numControllers)
