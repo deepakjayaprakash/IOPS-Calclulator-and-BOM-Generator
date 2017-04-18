@@ -14,10 +14,15 @@
     
                       
 <?php 
-        
+        if(isset($_GET['usablecapacity'])){
         $usableCapacity=$_GET['usablecapacity'];
+        }
+         if(isset($_GET['usablecapacity'])){
         $raidType=$_GET['raidtype'];
+         }
+          if(isset($_GET['usablecapacity'])){
         $diskType=$_GET['disktype'];
+          }
         
         
         ?>
