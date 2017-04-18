@@ -372,6 +372,7 @@
                 <p>408-663-6906	</p>
                 <br><br>
                 <p><strong>To: </strong> <?php echo $customerName.','.$companyName; ?></p>
+                 <p><strong>Description: </strong> <?php echo $description; ?></p>
             </div>
             <div class="col-md-6">
                 <br>
@@ -389,7 +390,7 @@
             <div class="col-md-2">Payment</div>
             <div class="col-md-2">Due Date</div>
         </div>
-            <div class="row">
+        <div class="row">
             <div class="col-md-2">Ajesh Baby</div>
             <div class="col-md-2">Senior Product Support Manager</div>
             <div class="col-md-2"></div>
@@ -397,6 +398,74 @@
             <div class="col-md-2">100% Advance</div>
             <div class="col-md-2"></div>
         </div>
+        <br><br>
+        <div class="row" style="background-color:darkslategrey;color:white;padding:5px;">
+            <div class="col-md-2">Quantity</div>
+            <div class="col-md-3">Item</div>
+            <div class="col-md-2">Unit Price</div>
+            <div class="col-md-2">Discount</div>
+            <div class="col-md-3">Line Total</div>
+        </div>
+            
+        <div class="row">
+            <div class="col-md-2"><?php echo $controllers; ?></div>
+            <div class="col-md-3">Controllers</div>
+            <div class="col-md-2"> $ 10,350 </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="controllercost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $jbods; ?></div>
+            <div class="col-md-3">JBODS</div>
+            <div class="col-md-2"> $ 2,200 </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="jbodcost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $datadisks; ?></div>
+            <div class="col-md-3">Data Disks</div>
+            <div class="col-md-2"> $ 1,800 </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="datadiskcost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $zil; ?></div>
+            <div class="col-md-3">ZIL</div>
+            <div class="col-md-2">$ 660 </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="zilcost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $readcache; ?></div>
+            <div class="col-md-3">Read Cache</div>
+            <div class="col-md-2">$ 720</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="readcachecost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $metacache; ?></div>
+            <div class="col-md-3">Meta Cache</div>
+            <div class="col-md-2">$ 1800</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="metacachecost"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><?php echo $sascables; ?></div>
+            <div class="col-md-3">SAS Cables</div>
+            <div class="col-md-2">$ 100</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><p id="sascost"></p></div>
+        </div>
+ <script>
+    document.getElementById("controllercost").innerHTML =  (costController*numControllers);
+     document.getElementById("jbodcost").innerHTML =  (numJBODS*costJBODS);
+     document.getElementById("datadiskcost").innerHTML =  (numDataDisks*costDataDisks);
+     document.getElementById("zilcost").innerHTML =  (zil*costZil);
+     document.getElementById("readcachecost").innerHTML = (readCache*costReadCache);
+     document.getElementById("metacachecost").innerHTML =  (metaCache*costMetaCache);
+     document.getElementById("sascost").innerHTML =  (costSASCables*numberOfSASCables);
+            
+ </script>           
             
     </div>
                 
