@@ -347,14 +347,14 @@
   <p>UI for generating BOM(Billing of Materials) and Price Calcualtion based on Customer Inputs </p>
 
   <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#home">Billing of Materials</a></li>
-    <li  class="active"><a data-toggle="tab" href="#menu2">Output section</a></li>
+    <li  class="active"><a data-toggle="tab" href="#home">Billing of Materials</a></li>
+    <li ><a data-toggle="tab" href="#menu2">Output section</a></li>
     <li><a data-toggle="tab" href="#menu3">Formulae Sheet</a></li>
   </ul>
 
   <div class="tab-content">
    
-      <div id="home" class="tab-pane fade">
+      <div id="home" class="tab-pane fade in active">
      
           <div class="col-md-2"></div>       
 
@@ -389,7 +389,9 @@
             <div class="col-md-2">Delivery Address</div>
             <div class="col-md-2">Payment</div>
             <div class="col-md-2">Due Date</div>
-        </div>
+        </div><br>
+            
+            
         <div class="row">
             <div class="col-md-2">Ajesh Baby</div>
             <div class="col-md-2">Senior Product Support Manager</div>
@@ -398,63 +400,96 @@
             <div class="col-md-2">100% Advance</div>
             <div class="col-md-2"></div>
         </div>
-        <br><br>
+            
+            <br><br>
+            
+        
         <div class="row" style="background-color:darkslategrey;color:white;padding:5px;">
             <div class="col-md-2">Quantity</div>
-            <div class="col-md-3">Item</div>
+            <div class="col-md-2">Item</div>
+            <div class="col-md-2">Description</div>
             <div class="col-md-2">Unit Price</div>
             <div class="col-md-2">Discount</div>
-            <div class="col-md-3">Line Total</div>
+            <div class="col-md-2">Line Total</div>
         </div>
+            
+            <div class="row" style="background-color:grey;color:white;">
+            <center><p>Hardware</p>    </center>
+            </div>
             
         <div class="row">
             <div class="col-md-2"><?php echo $controllers; ?></div>
-            <div class="col-md-3">Controllers</div>
+            <div class="col-md-2">Controllers</div>
+            <div class="col-md-2">ESA-A10	</div>
             <div class="col-md-2"> $ 10,350 </div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="controllercost"></p></div>
+            <div class="col-md-2"><p id="controllercost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $jbods; ?></div>
-            <div class="col-md-3">JBODS</div>
+            <div class="col-md-2">JBODS</div>
+            <div class="col-md-2">ESA-J10-45	</div>
             <div class="col-md-2"> $ 2,200 </div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="jbodcost"></p></div>
+            <div class="col-md-2"><p id="jbodcost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $datadisks; ?></div>
-            <div class="col-md-3">Data Disks</div>
+            <div class="col-md-2">Data Disks</div>
+            <div class="col-md-2"></div>
             <div class="col-md-2"> $ 1,800 </div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="datadiskcost"></p></div>
+            <div class="col-md-2"><p id="datadiskcost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $zil; ?></div>
-            <div class="col-md-3">ZIL</div>
+            <div class="col-md-2">ZIL</div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">$ 660 </div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="zilcost"></p></div>
+            <div class="col-md-2"><p id="zilcost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $readcache; ?></div>
-            <div class="col-md-3">Read Cache</div>
+            <div class="col-md-2">Read Cache</div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">$ 720</div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="readcachecost"></p></div>
+            <div class="col-md-2"><p id="readcachecost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $metacache; ?></div>
-            <div class="col-md-3">Meta Cache</div>
+            <div class="col-md-2">Meta Cache</div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">$ 1800</div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="metacachecost"></p></div>
+            <div class="col-md-2"><p id="metacachecost"></p></div>
         </div>
         <div class="row">
             <div class="col-md-2"><?php echo $sascables; ?></div>
-            <div class="col-md-3">SAS Cables</div>
+            <div class="col-md-2">SAS Cables</div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">$ 100</div>
             <div class="col-md-2"></div>
-            <div class="col-md-3"><p id="sascost"></p></div>
+            <div class="col-md-2"><p id="sascost"></p></div>
+        </div>
+            
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><strong>Total H/W Cost </strong>	</div>
+            <div class="col-md-2">3year Support Inclusive</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><strong><p id="totalhw"></p></strong></div>
+        </div>
+            <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">Hardware Support per year from 4th year</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">15%</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><p id="hwsupport"></p></div>
         </div>
  <script>
     document.getElementById("controllercost").innerHTML =  (costController*numControllers);
@@ -464,8 +499,93 @@
      document.getElementById("readcachecost").innerHTML = (readCache*costReadCache);
      document.getElementById("metacachecost").innerHTML =  (metaCache*costMetaCache);
      document.getElementById("sascost").innerHTML =  (costSASCables*numberOfSASCables);
+     document.getElementById("totalhw").innerHTML =  (totalHWCost); 
+     document.getElementById("hwsupport").innerHTML =  (supportHW);
+     
+ </script> 
             
- </script>           
+            
+        
+            
+        <div class="row" style="background-color:darkslategrey;color:white;padding:5px;">
+            <div class="col-md-2">Quantity</div>
+            <div class="col-md-2">Item</div>
+            <div class="col-md-2">Description</div>
+            <div class="col-md-2">Unit Price</div>
+            <div class="col-md-2">Discount</div>
+            <div class="col-md-2">Line Total</div>
+        </div>
+         
+            <div class="row" style="background-color:grey;color:white;">
+            <center><p>Software</p>    </center>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2"><?php echo $usablecapacity; ?></div>
+            <div class="col-md-2">Per TB User Capacity SW License</div>
+            <div class="col-md-2">Elasticenter and ElastiStor SW License 
+24/7 Remote Support for 1st year Inclusive</div>
+            <div class="col-md-2"><p id="priceperTB"></p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><p id="totalsw"></p></div>
+        </div>
+         <br><br>
+            <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">Software Support Cost</div>
+            <div class="col-md-2">2nd year onwards yearly Support for 24/7 Remote Support		</div>
+            <div class="col-md-2">15%</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><p id="swsupport"></p></div>
+        </div>
+            
+    <script>
+            
+    document.getElementById("totalsw").innerHTML =  (totalSWCost); 
+     document.getElementById("swsupport").innerHTML =  (supportSW); 
+     document.getElementById("priceperTB").innerHTML =  (pricepertb);
+        
+    </script> 
+            
+      <br><br>     
+        <div class="row" style="background-color:grey;color:white;">
+            <center><p>Total</p>    </center>
+        </div>
+         <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">3 Yr HW and SW support incl	</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><p id="totalcost3"></p></div>
+        </div>   
+            <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">5 Yr HW and SW support incl	</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><p id="totalcost5"></p></div>
+        </div>  
+            <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">Next day part delivery	</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div> 
+            <br>
+       
+            
+    <script>
+            
+    document.getElementById("totalcost3").innerHTML =  (totalCost3); 
+     document.getElementById("totalcost5").innerHTML =  (totalCost5); 
+    
+    </script> 
             
     </div>
                 
@@ -474,7 +594,7 @@
     </div>
 </div> 
 
-    <div id="menu2" class="tab-pane fade  in active">
+    <div id="menu2" class="tab-pane fade  in ">
         
         
      
